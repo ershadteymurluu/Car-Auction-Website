@@ -1,0 +1,38 @@
+﻿@model HomeViewModel
+
+
+@foreach (Car car in Model.Cars)
+{
+    if (@car.Status == false)
+    {
+        <div class="col-lg-3 col-md-4 ending-soon col-sm-12">
+            <div class="car-wrapper">
+                <div class="car-img-wrapper">
+                    <a asp-action="index" asp-controller="auctioncardetail" asp-route-id="@car.Id">
+                        @if (car.Images.Count > 0)
+                        {
+                            <img src="~/assets/images/hero/@car.Images[car.Images.Count-2].imagePath" alt="" width="100%">
+                        }
+                    </a>
+                    <div class="auction-info" data-end-time="@car.Id">
+                        <ul class="d-flex justify-content-between">
+                            @if (@car.CarBids.Count > 0)
+                            {
+                                <li><span class="countdown">Sold for $@car.CarBids[car.CarBids.Count-1].Bid </span></li>
+                            }
+                            else
+                            {
+                                <li class="starting-price"><span>Bid</span> <span class="highest-bid">$0</span></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="car-details">
+                    <p><a asp-action="index" asp-controller="auctioncardetail" asp-route-id="@car.Id">@car.Year.Years @car.Make @car.Model</a></p>
+                    <p>~@car.Mileage km, @car.Transmission.Name, @car.MotorSize motor</p>
+                    <p>@car.City</p>
+                </div>
+            </div>
+        </div>
+    }
+}

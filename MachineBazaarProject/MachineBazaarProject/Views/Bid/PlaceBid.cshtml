@@ -1,0 +1,51 @@
+﻿@model BidViewModel
+<section id="Bid">
+    <div class="container-fluid">
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-md-12 col-lg-6">
+                    <img src="~/assets/images/hero/@Model.Car.Images[Model.Car.Images.Count-2].imagePath" width="100%" height="100%" style="box-shadow:1px 1px 4px 0px #0000008c; border-radius:3px" />
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <div class="top">
+                        <h3 class="car-title">@Model.Car.Year.Years @Model.Car.Make @Model.Car.Model @Model.Car.BodyStyle.Name</h3>
+                        @if (Model.Car.CarBids.Count == 0)
+                        {
+                            <p class="highestBid-title">Starting Price</p>
+                            <h4 class="highestBid-price">@Model.Car.AuctionStartingPrice $</h4>
+                        }
+                        @if (Model.Car.CarBids.Count > 0)
+                        {
+                            <p class="highestBid-title">Highest Bid</p>
+                            <h4 class="highestBid-price">@Model.Car.CarBids[Model.Car.CarBids.Count-1].Bid $</h4>
+                        }
+                    </div>
+                    <div class="form-group">
+                        <form method="post">
+                            <input type="hidden" value="@Model.Car.Id" asp-for="@Model.GetCarId" />
+                            <div class="row g-2">
+                                <div class="col-6 col-md-4 col-sm-4">
+                                    <input type="number" class="form-control" placeholder="Ex. 1500$" asp-for="@Model.Bid" />
+                                    <span class="text-danger" asp-validation-for="@Model.Bid"></span>
+                                </div>
+                                <div class="col-2 col-md-2 col-sm-2">
+                                    <button class="btn btn-success d-block w-100" type="submit" style="background-color:gold;border:none; outline:none;">Bid</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="car-detail-info">
+                        <ul>
+                            <li>@Model.Car.BodyStyle.Name</li>
+                            <li>@Model.Car.Transmission.Name</li>
+                            <li>@Model.Car.MotorSize.Size sm<sup>3</sup></li>
+                            <li>@Model.Car.FuelType.Name</li>
+                            <li>@Model.Car.Hp HP</li>
+                            <li>@Model.Car.Mileage km</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

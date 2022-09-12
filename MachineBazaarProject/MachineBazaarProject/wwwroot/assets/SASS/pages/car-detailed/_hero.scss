@@ -1,0 +1,253 @@
+#hero {
+    padding-bottom: 40px;
+    .wrapper-hero-top {
+        padding: 12px 0px;
+
+        .make-model {
+            font-size: 21px;
+            font-weight: bolder;
+
+            i {
+                position: relative;
+
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+        }
+
+        .car-info {
+            font-size: 18px;
+            font-weight: lighter;
+        }
+
+        a {
+            span {
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            i {
+                font-size: 20px;
+            }
+
+            text-decoration: none;
+            color: black;
+        }
+    }
+
+    .owl-carousel {
+        img {
+            border-radius: 5px;
+        }
+    }
+
+    .owl-dots {
+        height: 10px;
+    }
+
+    .carousel-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+        position: relative;
+        width: fit-content;
+        font-weight: 400;
+
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: $primary-color;
+            top: 25px;
+        }
+    }
+
+    .btn-bid {
+        padding: 8px 20px;
+        background-color: $primary-color;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        font-size: 17px;
+        letter-spacing: 0.6px;
+        font-weight: 500;
+        display: inline-block;
+    }
+
+
+    .wrapper {
+        flex-wrap: wrap;
+
+        .left {
+            ul {
+                li {
+                    border-left: 1px solid $openblack;
+                }
+            }
+        }
+
+        .right {
+            ul {
+                li {
+                    border-right: 1px solid $openblack;
+                }
+            }
+        }
+    }
+
+    .product-details {
+
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            max-width: 400px;
+            min-width: 360px;
+            margin-top: 20px;
+
+            label {
+                font-weight: 400;
+                background-color: #eeeef0;
+                display: inline-block;
+                padding: 5px;
+                padding-left: 20px;
+            }
+
+            label,
+            span {
+                width: 50%;
+                text-align: start;
+            }
+
+            li {
+                border-top: 1px solid $openblack;
+            }
+
+            li:last-child {
+                border-bottom: 1px solid $openblack;
+            }
+        }
+    }
+
+    .auction-info {
+        margin-bottom: 20px;
+        bottom: 6px;
+        left: 6px;
+        background-color: #222222;
+        color: white;
+        border-radius: 5px;
+        padding: 10px 10px;
+
+        ul {
+            padding: 0;
+            margin: 0;
+            gap: 20px;
+
+            li {
+                font-size: 14px;
+
+                i {
+                    color: rgb(196, 196, 196);
+                }
+
+                span.countdown {
+                    font-weight: bolder;
+                }
+            }
+
+            li.starting-price {
+                span {
+                    color: rgb(196, 196, 196);
+                }
+
+                span.highest-bid {
+                    color: white;
+                    font-weight: bolder;
+                }
+            }
+        }
+    }
+    #Comment{
+        input{
+            box-shadow: none;
+            outline: none;
+            border: 1px solid $openblack;
+        }
+        .comment-send{
+            background-color: $primary-color;
+            font-weight: 600;
+            box-shadow: none;
+            border: none;
+        }
+        .allComments{
+            ul{
+                padding: 0;
+                li{
+                    .person-bid{
+                        background-color: green;
+                        padding: 5px;
+                        border-radius: 30px;
+                        color: white;
+                    }
+                    div:first-child{
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        width: 140px;
+                        min-width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                    }
+                    div:last-child{
+                        padding: 20px;
+                        border: 1px solid $openblack;
+                        box-shadow: 0 0 1px 0px rgb(0 0 0 / 16%);   
+                        border-bottom-left-radius: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width:546px) {
+    .left-top{
+        flex-direction: column;
+    }
+    .comments,.all-bids{
+        display: none;
+    }
+    .btn-bid {
+       margin-bottom: 20px;
+    }
+    .product-details{
+        display: flex;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width:820px) {
+    .left {
+        ul {
+            margin-bottom: 0 !important;
+
+            li {
+                border-right: 1px solid $openblack;
+            }
+        }
+    }
+
+    .right {
+        ul {
+            margin-top: 0 !important;
+
+            li:first-child {
+                border-top: none !important;
+            }
+        }
+    }
+}
+

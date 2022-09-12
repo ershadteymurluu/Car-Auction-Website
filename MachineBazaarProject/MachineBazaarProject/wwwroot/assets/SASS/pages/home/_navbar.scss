@@ -1,0 +1,261 @@
+.container-fluid {
+    padding: 0px 40px;
+}
+
+nav {
+    .container-fluid {
+
+
+        .nav-container {
+            border-bottom: 1px solid $openblack;
+            padding: 15px 0px;
+
+            .collapse {
+                li {
+                    a {
+                        color: black;
+                        font-weight: 500;
+                        width: fit-content;
+                    }
+                }
+
+                span {
+                    background-color: $primary-color;
+                    padding: 10px;
+                    border-radius: 30px;
+                    font-weight: bold;
+                }
+
+                input {
+                    box-shadow: none;
+                    border: 1px solid rgba(0, 0, 0, 0.13);
+                }
+
+                button {
+                    background-color: $primary-color;
+                    border-radius: 10px;
+                    border: none;
+                }
+            }
+        }
+
+        .nav-wrapper {
+
+            .nav-left {
+                .sell-car {
+                    white-space: nowrap;
+                }
+
+                .daily-email {
+                    white-space: nowrap;
+                }
+
+                .what-is-machine {
+                    white-space: nowrap;
+                }
+
+                ul {
+                    display: flex;
+                    margin: 0px;
+                    padding: 0;
+                    padding-top: 6px !important;
+
+                    li {
+                        list-style: none;
+
+                        a {
+                            text-decoration: none;
+                            color: black;
+                        }
+
+                        span {
+                            background-color: $primary-color;
+                            padding: 10px;
+                            border-radius: 30px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+
+                .logo {
+                    font-size: 30px;
+                    font-weight: bolder;
+                    margin: 0px;
+
+                    a {
+                        text-decoration: none;
+                    }
+
+                    p {
+                        color: black;
+                    }
+
+                    span {
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+    }
+
+    .nav-right {
+        min-width: 0;
+        margin-left: 30px;
+
+        button.navbar-toggle {
+            display: none;
+            background-color: white;
+            border: none;
+            outline: none;
+            font-size: 20px;
+        }
+
+        .sign-in-btn {
+            text-decoration: none;
+            color: black;
+            background-color: $primary-color;
+            padding: 10px 30px;
+            border-radius: 8px;
+            border: none;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .form-group {
+            margin-right: 30px;
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+            width: 380px;
+
+            input {
+                width: 100%;
+                height: 46px;
+                min-width: 0;
+                padding: 10px;
+                padding-left: 50px;
+                background-color: rgba(128, 128, 128, 0.110);
+                border-radius: 5px;
+                outline: none;
+                border: none;
+                white-space: wrap;
+
+                &:hover {
+                    background-color: rgba(128, 128, 128, 0.175);
+                    ;
+                }
+            }
+
+            .search-icon {
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top: 9px;
+                left: 15px;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 1400px) {
+    .container-fluid {
+        width: 1450px;
+    }
+}
+
+@media (max-width:768px) {
+    .nav-wrapper {
+            flex-wrap: wrap;
+     }
+
+    .auction-toggle{
+        i{
+            display: inline!important;
+        }
+    }
+    .container-fluid {
+        padding: 0px 12px;
+    }
+}
+
+@media (max-width: 1311px) {
+    .daily-email {
+        display: none;
+    }
+}
+
+@media (max-width: 1220px) {
+    .what-is-machine {
+        display: none;
+    }
+    .nav-wrapper{
+        .form-group {
+            width: 530px !important;
+        }
+    }
+}
+
+@media (max-width: 1027px) {
+    .sell-car {
+        display: none;
+    }
+}
+@media (min-width:993px){
+    .collapse{
+        display: none;
+    }
+}
+@media (max-width: 992px) {
+    nav {
+        .nav-container{
+            padding: 10px 0px!important;
+        }
+        .nav-left {
+            align-items: center;
+            .logo {
+                p {
+                    font-size: 25px;
+                }
+
+                span {
+                    font-size: 25px;
+                }
+            }
+
+            ul {
+                display: none;
+
+                li {
+                    display: none;
+                }
+            }
+        }
+
+        .nav-right {
+            gap: 12px;
+            margin-left: 0;
+            align-items: center;
+            .form-group {
+                display: none;
+
+                input {
+                    display: none;
+                }
+            }
+
+            button.navbar-toggle {
+                display: inline-block;
+            }
+
+            .sign-in-btn {
+                font-size: 15px;
+                padding: 5px 12px;
+            }
+        }
+    }
+}

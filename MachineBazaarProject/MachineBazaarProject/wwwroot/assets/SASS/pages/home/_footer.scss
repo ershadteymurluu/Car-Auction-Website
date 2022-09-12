@@ -1,0 +1,124 @@
+footer {
+    background-color: #eeeef0;
+
+    .container-fluid {
+        padding: 0px;
+    }
+
+    .wrapper {
+        padding: 40px 40px 0px 40px;
+        flex-wrap: wrap;
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .footer-item {
+            margin-bottom: 40px;
+            text-align: start;
+        }
+
+        .logo {
+            a {
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            span {
+                color: $primary-color;
+            }
+        }
+
+        p.text-uppercase {
+            display: inline-block;
+            margin-bottom: 10px;
+
+            color: rgba(0, 0, 0, 0.349);
+            font-size: 12px;
+        }
+
+        .social-networks {
+            ul {
+                padding: 0;
+                margin: 0;
+                margin-bottom: 10px;
+            }
+
+            .small-fs {
+                font-size: 12px;
+            }
+        }
+
+        .how-it-works {
+            a {
+                font-size: 15px;
+            }
+
+            a:not(:last-child) {
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+
+        a:not(:first-child) {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .sellers {
+            a {
+                font-size: 15px;
+            }
+
+            a:not(:last-child) {
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+
+        .support {
+            a {
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+@media(max-width:930px) {
+    footer {
+        .wrapper {
+            .logo {
+                display: none;
+            }
+        }
+    }
+}
+
+@media(max-width:546px) {
+    footer {
+        .support {
+            width: 100%;
+        }
+
+        .wrapper {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+    }
+}
+
+@media(min-width:546px) and (max-width:768px) {
+    footer {
+        .wrapper {
+            gap: 40px;
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+        .wrapper:last-child {
+            margin-bottom: 0px;
+        }
+    }
+}

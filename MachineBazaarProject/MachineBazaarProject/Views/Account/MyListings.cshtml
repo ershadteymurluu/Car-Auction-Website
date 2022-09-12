@@ -1,0 +1,52 @@
+﻿@model AppUser
+<div class="container-fluid">
+    <div class="table-wrapper table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
+        <table class="table my-listings">
+            <thead>
+                <tr>
+                    <th scope="col">Make</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Expire</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Cars)
+                {
+                    <tr>
+                        <td>@item.Make</td>
+                        <td>@item.Model</td>
+                        <td>@item.Year.Years</td>
+                        @if (@item.Status)
+                        {
+                            <td>@item.EndTime.ToString("MMM dd yyy")</td>
+                        }
+                        else
+                        {
+                            <td>Expired <a asp-action="viewdetails" asp-controller="auctioncardetail" asp-route-id="@item.Id">see auction details</a> </td>
+                        }
+                        <td><img src="~/assets/images/hero/@item.Images[item.Images.Count-2].imagePath" height="40px" style="border-radius:3px" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<style>
+    .table-wrapper {
+        min-height: 80vh;
+    }
+
+    .table-wrapper {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        box-shadow: 1px 1px 7px 0px #0000003d;
+        border-radius: 15px;
+        padding: 10px 20px;
+        padding-bottom: 5px;
+    }
+</style>

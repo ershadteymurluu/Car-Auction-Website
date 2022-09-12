@@ -1,0 +1,44 @@
+.sell-car-hero{
+    .container-fluid{
+        display: flex;
+        justify-content: center;
+        .wrapper{
+            .small{
+                display: none;
+            }
+            padding: 10px;
+            padding-top: 60px;
+            padding-bottom: 30px;
+            max-width: 620px;
+            .top{
+                h2{
+                    font-weight: bolder;
+                }
+                p.description{
+                    color: rgba(0, 0, 0, 0.880);
+                }
+            }
+            .submit-car{
+                padding: 10px 20px;
+                background-color: $primary-color;
+                border: none;
+                border-radius: 10px;
+                letter-spacing: 0.6px;
+                font-weight: bolder;
+            }
+        }
+    }
+}
+@media (max-width:768px) {
+    .wrapper{
+        .row{
+            gap: 20px;
+            .large{
+                display: none;
+            }
+            .small{
+                display: block!important;
+            }
+        }
+    }
+}

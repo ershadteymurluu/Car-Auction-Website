@@ -1,0 +1,36 @@
+﻿@model EditViewModel
+<section class="EditProfile">
+    <div class="container-fluid">
+        <div class="wrapper">
+            <h1>Edit Profile</h1>
+            <form method="post" enctype="multipart/form-data">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <div class="row g-3">
+                    <div class="col-md-6 col-sm-12">
+                        <input class="form-control" type="text" value="@Model.User.UserName" placeholder="Type your new username" asp-for="UserName"/>
+                        <span  class="text-danger" asp-validation-for="UserName"></span>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <input class="form-control" type="text" value="@Model.User.Email" placeholder="Type your new email" asp-for="Email"/>
+                        <span class="text-danger" asp-validation-for="Email"></span>
+                    </div>
+                    <div class="col-12">
+                        <input class="form-control" type="text" value="@Model.User.PhoneNumber" placeholder="Type your new number" asp-for="PhoneNumber" />
+                        <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                    </div>
+                    <div class="col-12">
+                        <input asp-for="Img" class="form-control" accept="image/*"/>
+                        <span class="text-danger" asp-validation-for="Img"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="save-editBtn text-center">
+                            <button type="submit">Save</button>
+                             <a asp-action="myprofile" asp-controller="account">Discard</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

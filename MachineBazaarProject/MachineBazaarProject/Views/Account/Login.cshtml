@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+}
+@model LoginViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MachineBazaar - Auction of cool modern cars, trucks and SUV's</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/assets/css/index.css">
+</head>
+<body>
+    <section id="account" class="log">
+        <div class="login-form">
+            <div class="content">
+                <div class="title">Login</div>
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="input-field">
+                        <input class="form-control" type="text" placeholder="Type your username" asp-for="Username">
+                        <i class="bi bi-person"></i>
+                    </div>
+                    <span class="text-danger" asp-validation-for="Username"></span>
+
+                    <div class="input-field">
+                        <input class="form-control" type="password" placeholder="Type your password" asp-for="Password">
+                        <i class="bi bi-lock"></i>
+                    </div>
+                    <span class="text-danger" asp-validation-for="Password"></span>
+
+                    <div class="loginBtn">
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
+                <div class="sign-up">Not a member? <a asp-controller="account" asp-action="register">Register now!</a></div>
+            </div>
+        </div>
+    </section>
+    <script src="~/assets/JS/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.4/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

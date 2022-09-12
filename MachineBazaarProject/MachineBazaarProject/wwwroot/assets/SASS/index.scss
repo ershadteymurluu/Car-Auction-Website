@@ -1,0 +1,40 @@
+*,
+*::after,
+*::before {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1,
+p {
+    margin: 0
+}
+ul{
+    li{
+        list-style: none;
+    }
+}
+body{
+    line-height: 1.5;
+    font-family: sans-serif;
+    min-width: 400px;  
+    letter-spacing: 0.4px;
+}
+
+//Home page
+@import "./Helpers/variables";
+@import "./Helpers/mixings";
+@import "./pages/home/navbar";
+@import "./pages/home/auctions";
+@import "./pages/home/about-us";
+@import "./pages/home/footer";
+
+//Hero page
+@import "./pages/car-detailed/hero.scss";
+
+//sell car page
+@import "./pages/sell-car/sell-car.scss";
+
+//account
+@import "./account/login.scss";
+@import "./account/register.scss";

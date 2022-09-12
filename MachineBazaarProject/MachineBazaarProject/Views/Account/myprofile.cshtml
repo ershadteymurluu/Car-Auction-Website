@@ -1,0 +1,40 @@
+﻿@model AppUser
+<section id="Profile">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="wrapper d-flex justify-content-center">
+                    <div class="item-wrapper d-flex align-items-center gap-5 ">
+                        <div class="profile-image">
+                            <img src="~/assets/images/ProfilePhotos/@Model.ProfilePicture" />
+                        </div>
+                        <div class="d-flex gap-5 align-items-baseline user-info ">
+                            <div>
+                                <h1>Hi, @Model.UserName</h1>
+                                <p style="color:#00000090">Joined @Model.JoinDate</p>
+                            </div>
+                            <a asp-action="editprofile" asp-controller="account" class="edit-profileBtn" style="text-decoration:none; color:black">Edit Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="about-us">
+    <div class="container-fluid">
+        <div class="information-wrapper d-flex align-items-start gap-4">
+            <div class="d-flex gap-1 flex-column align-items-start">
+                <span>About Us</span>
+                <p class="about-content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo ipsum porro natus dolores aiores repellendus? Perspiciatis quam corporis aliquam incidunt optio quidem vitae illo obcaecati ex? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, illo? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio laboriosam tempora voluptas modi minus suscipit sint quo dolores maxime iusto.
+                </p>
+            </div>
+            <div class="form-group d-flex gap-2 flex-column align-items-start">
+                <span>Get the Daily Email</span>
+                <input type="email" placeholder="Email address" class="form-control">
+                <button type="button" class="btn">Subscribe</button>
+            </div>
+        </div>
+    </div>
+</section>

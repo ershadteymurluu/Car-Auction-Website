@@ -1,0 +1,245 @@
+﻿@model CommentViewModel
+
+@{
+    var endTime = Model.Car.EndTime;
+    var createdTime = Model.Car.Created;
+}
+<!-- Hero section starts -->
+<section id="hero">
+    <div class="container-fluid">
+        <div class="wrapper-hero-top d-flex flex-column">
+            <p class="make-model">@Model.Car.Year.Years @Model.Car.Make @Model.Car.Model @Model.Car.BodyStyle.Name <a href=""><i class="bi bi-heart"></i></a></p>
+            <div class="d-flex justify-content-between align-items-baseline left-top">
+                <p class="car-info">~@Model.Car.Mileage km</p>
+                <div>
+                    <a href=""><span>Share</span> <i class="bi bi-download"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="timer">
+            <div data-end-time="@Model.Car.Id" class="auction-info d-inline-block">
+                <ul class="d-flex justify-content-between d-block">
+                    @if (Model.Car.Status)
+                    {
+                        <li>
+                            <i class="bi bi-stopwatch"></i>
+                            <span id="@Model.Car.Id" class="countdown">
+                                waiting...
+                            </span>
+                        </li>
+                        if (@Model.Car.CarBids.Count > 0)
+                        {
+                            <li class="starting-price bid"><span>High Bid</span> <span class="highest-bid">$@Model.Car.CarBids[Model.Car.CarBids.Count-1].Bid</span></li>
+                        }
+                        else
+                        {
+                            <li class="starting-price bid"><span>Starting Price</span> $@Model.Car.AuctionStartingPrice</li>
+                        }
+                    }
+                    else
+                    {
+                        <li>
+                            <i class="fa-solid fa-handshake"></i>
+                            @if (Model.Car.CarBids.Count > 0)
+                            {
+                                <span id="@Model.Car.Id" class="countdown">
+                                    Sold for <span class="highest-bid">$@Model.Car.CarBids[Model.Car.CarBids.Count-1].Bid</span>
+                                </span>
+                            }
+                            else
+                            {
+                                <span id="@Model.Car.Id" class="countdown">
+                                    Sold for $0
+                                </span>
+                            }
+                        </li>
+                    }
+                    <li class="starting-price all-bids"><i class="fa-solid fa-hashtag"></i> <span>Bids</span> <span class="highest-bid">@((int)TempData["Bids"])</span></li>
+                    <li class="starting-price comments"><i class="bi bi-chat"></i>&nbsp; <span>Comments</span> <span class="highest-bid">@Model.Car.Comments.Count</span></li>
+                </ul>
+            </div>
+            @if (Model.Car.AppUser.UserName != User.Identity.Name)
+            {
+                <a asp-action="placebid" asp-controller="bid" asp-route-id="@Model.Car.Id" class="btn-bid" style="text-decoration:none;color:black">Place Bid</a>
+            }
+            else
+            {
+                <a asp-action="ViewDetails" asp-controller="auctioncardetail" asp-route-id="@Model.Car.Id" class="btn-bid" style="text-decoration:none;color:black;cursor:pointer">View Details</a>
+            }
+        </div>
+
+
+        <!-- Carousel starts -->
+        <div class="carousel-wrapper">
+            <div class="owl-carousel">
+                @foreach (var image in Model.Car.Images)
+                {
+                    <img src="~/assets/images/hero/@image.imagePath" alt="" height="200px" style="aspect-ratio:1/1; object-fit:fill;">
+                }
+            </div>
+        </div>
+        <!-- Carousel ends -->
+        <!-- Product details start -->
+        <div class="wrapper d-flex">
+            <div class="product-details left">
+                <ul>
+                    <li><label>City</label> <span>@Model.Car.City</span></li>
+                    <li><label>Make</label> <span>@Model.Car.Make</span></li>
+                    <li><label>Model</label> <span>@Model.Car.Model</span></li>
+                    <li><label>Year</label> <span>@Model.Car.Year.Years</span></li>
+                    <li><label>Mileage</label> <span>@Model.Car.Mileage km</span></li>
+                </ul>
+            </div>
+            <div class="product-details right">
+                <ul>
+                    <li><label>Motor Size</label> <span>@Model.Car.MotorSize.Size (sm<sup>3</sup>)</span></li>
+                    <li><label>HP</label> <span>@Model.Car.Hp</span></li>
+                    <li><label>Transmission</label> <span>@Model.Car.Transmission.Name</span></li>
+                    <li><label>Fuel Type</label> <span>@Model.Car.FuelType.Name</span></li>
+                    <li><label>Body Style</label> <span>@Model.Car.BodyStyle.Name</span></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="wrapper d-flex">
+            <div class="product-details left">
+                <ul>
+                    <li>
+                        <label>Seller</label> <span class="seller">
+                            <img src="~/assets//images/ProfilePhotos/@Model.Car.AppUser.ProfilePicture" width="30px" style="border-radius:100%; aspect-ratio:1.5/1; object-fit:cover" />
+                            @Model.Car.AppUser.UserName
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="product-details right">
+                <ul>
+                    <li><label>PhoneNumber</label> <span><a href=tel:@Model.Car.AppUser.PhoneNumber>@Model.Car.AppUser.PhoneNumber</a></span></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Product details ends -->
+        <!-- About starts -->
+        <div class="product-about">
+            <p style="font-size: 30px; margin-bottom: 5px;">Seller Notes</p>
+            <p style="margin-bottom: 20px;">
+                @Model.Car.SellerNote
+            </p>
+        </div>
+        <!-- About ends -->
+        <!-- Comment starts -->
+        <div id="Comment" class="mt-5">
+            <form method="post" action="index">
+                <div class="row">
+                    <input type="hidden" value="@Model.Car.Id" asp-for="@Model.GetCarId" />
+                    <div class="col-lg-10 col-md-9 col-9">
+                        <input type="text" class="form-control" placeholder="Leave a comment..." asp-for="@Model.CommentText">
+                        <span class="text-danger" asp-validation-for="@Model.CommentText"></span>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-3">
+                        <button type="submit" class="comment-send d-block w-100 btn">Send</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="allComments mt-4">
+                <ul class="d-flex flex-column gap-3">
+                    @foreach (Comments comment in Model.Car.Comments.OrderByDescending(item => item.Id))
+                    {
+                        <li class="d-flex align-items-start gap-3">
+                            <div>
+                                <img src="~/assets//images//ProfilePhotos/@comment.User.ProfilePicture" style="width: 100%;min-width: 100%;height: 100%;border-radius: 50%; aspect-ratio:1/1 ;object-fit:fill" />
+                            </div>
+                            <div class="d-flex flex-column gap-2" style="width:100%">
+                                <p class="name">
+                                    @comment.User.UserName
+                                    @if (comment.User.UserName == Model.Car.AppUser.UserName)
+                                    {
+                                        <span class="person-bid" style="background-color:gold;border-radius:5px; letter-spacing:1px;">
+                                            Seller
+                                        </span>
+                                    }
+                                    @if (comment.User.MyBids.LastOrDefault(item => item.CarId == Model.Car.Id) != null)
+                                    {
+                                        @if (Model.Car.CarBids.OrderByDescending(item => item.Bid).Select(item => item.User).FirstOrDefault().UserName == comment.User.UserName)
+                                        {
+                                            <span class="person-bid" style="background-color: #262626; border-radius:5px;">
+                                                <span style="color:rgb(196, 196, 196);letter-spacing:0.6px">Bid</span> $@comment.User.MyBids.LastOrDefault(item=>item.CarId==Model.Car.Id).Bid <i class="text-success fa-solid fa-arrow-up"></i>
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="person-bid" style="background-color: #262626; border-radius:5px;">
+                                                <span style="color:rgb(196, 196, 196);letter-spacing:0.6px">Bid</span> $@comment.User.MyBids.LastOrDefault(item=>item.CarId==Model.Car.Id).Bid
+                                            </span>
+                                        }
+                                    }
+                                </p>
+                                <p class="comment-text">@comment.CommentText</p>
+                                <small style="color:#00000060"><time class="timeago" datetime="@comment.CommentDate"></time></small>
+                            </div>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+        <!-- Comments ends -->
+
+
+    </div>
+</section>
+
+@section Comment{
+    <script>
+        $(".comment-send").click(function(e) {
+            location.reload();
+        });
+        $(window).ready(function() {
+            $("time.timeago").timeago();
+        });
+    </script>
+}
+
+    <!-- Hero section ends -->
+    @section scripts{
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    @if (Model.Car.Status)
+    {
+        <script>
+            function countdown() {
+                let countDate = new Date(`@endTime.ToString("MMMM dd yyy %h:mm:ss tt")`).getTime();
+                let now = new Date().getTime();
+                let gap = countDate - now;
+
+                let second = 1000; //ms
+                let minute = second * 60;
+                let hour = minute * 60;
+                let day = hour * 24;
+
+                let textDay = Math.round(gap / day);
+                let textHour = Math.floor(gap / hour);
+                let textMinute = Math.floor((gap % hour) / minute);
+                let textSecond = Math.floor((gap % minute) / second);
+
+                if (textHour <= 6) {
+                    $("[data-end-time=@Model.Car.Id]").css("background-color", "red");
+                }
+
+                if (textHour <= 0 && textMinute <= 0 && textSecond <= 0) {
+                    $("[id=@Model.Car.Id]").text("waiting...")
+                }
+                else if (textHour <= 23) {
+                    $("[id=@Model.Car.Id]").text(`${textHour}:${textMinute}:${textSecond}`);
+                }
+                else if (textHour > 24) {
+                    if (textDay == 1) $("[id=@Model.Car.Id]").text(`${textDay} day`);
+                    else $("[id=@Model.Car.Id]").text(`${textDay} days`);
+                }
+            }
+            setInterval(countdown, 1000);
+        </script>
+
+    }
+}

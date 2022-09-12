@@ -1,0 +1,228 @@
+﻿@model SellCarViewModel
+<div class="sell-car-hero">
+    <div class="container-fluid">
+        <div class="wrapper">
+            <div class="top">
+                <h2>Tell us about your car</h2>
+                <p class="description">Please give us some basics about the car you’d like to sell. We’ll also need details about the car’s title status as well as 12 photos that highlight the car’s exterior and interior condition.</p>
+            </div>
+            <div class="form-group">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="row pt-2">
+                        <div class="col-md-4 col-sm-12">
+                            <div class="large">
+                                <label>Make</label>
+                                <input type="text" class="form-control" asp-for="@Model.Make">
+                                <span class="text-danger" asp-validation-for="@Model.Make"></span>
+                            </div>
+                            <div class="small">
+                                <input type="text" class="form-control" placeholder="Make" asp-for="@Model.Make">
+                                <span class="text-danger" asp-validation-for="@Model.Make"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <div class="large">
+                                <label>Model</label>
+                                <input type="text" class="form-control" asp-for="@Model.Model">
+                                <span class="text-danger" asp-validation-for="@Model.Model"></span>
+                            </div>
+                            <div class="small">
+                                <input type="text" class="form-control" placeholder="Model" asp-for="@Model.Model">
+                                <span class="text-danger" asp-validation-for="@Model.Model"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <div class="large">
+                                <label>City</label>
+                                <input type="text" class="form-control" asp-for="@Model.City">
+                                <span class="text-danger" asp-validation-for="@Model.City"></span>
+                            </div>
+                            <div class="small">
+                                <input type="text" class="form-control" placeholder="City" asp-for="@Model.City">
+                                <span class="text-danger" asp-validation-for="@Model.City"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pt-3">
+                        <div class="col-md-4 col-sm-12">
+                            <div class="large">
+                                <label>Year</label>
+                                <select name="GetYearId" id="" class="form-control">
+                                    <option value="-1">Choose a year</option>
+                                    @foreach (Year year in Model.Years)
+                                    {
+                                        <option value="@year.Id">@year.Years</option>
+                                    }
+                                </select>
+                                <span class="text-danger" asp-validation-for="@Model.GetYearId"></span>
+                            </div>
+                            <div class="small">
+                                <select name="GetYearId" id="" class="form-control">
+                                    <option value="-1">Choose a year</option>
+                                    @foreach (Year year in Model.Years)
+                                    {
+                                        <option value="@year.Id">@year.Years</option>
+                                    }
+                                </select>
+                                <span class="text-danger" asp-validation-for="@Model.GetYearId"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <div class="large">
+                                <label>Mileage</label>
+                                <input type="number" class="form-control" asp-for="@Model.Mileage">
+                                <span class="text-danger" asp-validation-for="@Model.Mileage"></span>
+                            </div>
+                            <div class="small">
+                                <input type="number" class="form-control" placeholder="Mileage" asp-for="@Model.Mileage">
+                                <span class="text-danger" asp-validation-for="@Model.Mileage"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pt-3">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="large">
+                                <label>Motor Size (sm<sup>3</sup>)</label>
+                                <select name="GetMotorSizeId" id="" class="form-control">
+                                    <option value="-1">Choose a motor size</option>
+                                    @foreach (MotorSize size in Model.MotorSizes)
+                                    {
+                                        <option value="@size.Id">@size.Size</option>
+                                    }
+                                </select>
+                                <span class="text-danger" asp-validation-for="@Model.GetMotorSizeId"></span>
+                            </div>
+                            <div class="small">
+                                <select name="GetMotorSizeId" id="" class="form-control">
+                                    <option value="-1">Choose a motor size</option>
+                                    @foreach (MotorSize size in Model.MotorSizes)
+                                    {
+                                        <option value="@size.Id">@size.Size</option>
+                                    }
+                                </select>
+                                <span class="text-danger" asp-validation-for="@Model.GetMotorSizeId"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="large">
+                                <label>HP</label>
+                                <input type="number" class="form-control" asp-for="@Model.Hp">
+                                <span class="text-danger" asp-validation-for="@Model.Hp"></span>
+                            </div>
+                            <div class="small">
+                                <input type="number" class="form-control" placeholder="HP" asp-for="@Model.Hp">
+                                <span class="text-danger" asp-validation-for="@Model.Hp"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pt-3">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="large">
+                                <label>Fuel Type</label>
+                                <select name="GetFuelTypeId" id="" class="form-control">
+                                    <option value="-1">Choose a fuel type</option>
+                                    @foreach (FuelType fuelType in Model.FuelTypes)
+                                    {
+                                        <option value="@fuelType.Id">@fuelType.Name</option>
+                                    }
+                                </select>
+                                <span class="text-danger" asp-validation-for="@Model.GetFuelTypeId"></span>
+                            </div>
+                            <div class="small">
+                                <select name="GetFuelTypeId" id="" class="form-control">
+                                    <option value="-1">Choose a fuel type</option>
+                                    @foreach (FuelType fuelType in Model.FuelTypes)
+                                    {
+                                        <option value="@fuelType.Id">@fuelType.Name</option>
+                                    }
+                                </select>
+                                <span class="text-danger" asp-validation-for="@Model.GetFuelTypeId"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="large">
+                                <label>Transmission</label>
+                                <select name="GetTransmissionId" id="" class="form-control">
+                                    <option value="-1">Choose a transmisson type</option>
+                                    @foreach (Transmission transmission in Model.Transmissions)
+                                    {
+                                        <option value="@transmission.Id">@transmission.Name</option>
+                                    }
+                                </select>
+                                <span class="text-danger" asp-validation-for="@Model.GetTransmissionId"></span>
+                            </div>
+                            <div class="small">
+                                <select name="GetTransmissionId" id="" class="form-control">
+                                    <option value="-1">Choose a transmisson type</option>
+                                    @foreach (Transmission transmission in Model.Transmissions)
+                                    {
+                                        <option value="@transmission.Id">@transmission.Name</option>
+                                    }
+                                </select>
+                                <span class="text-danger" asp-validation-for="@Model.GetTransmissionId"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row pt-3">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="large">
+                                <label>Body Style</label>
+                                <select name="GetBodyStyleId" id="" class="form-control">
+                                    <option value="-1">Choose a body type</option>
+                                    @foreach (BodyStyle body in Model.BodyStyles)
+                                    {
+                                        <option value="@body.Id">@body.Name</option>
+                                    }
+                                </select>
+                                <span class="text-danger" asp-validation-for="@Model.GetBodyStyleId"></span>
+                            </div>
+                            <div class="small">
+                                <select name="GetBodyStyleId" id="" class="form-control">
+                                    <option value="-1">Choose a body type</option>
+                                    @foreach (BodyStyle body in Model.BodyStyles)
+                                    {
+                                        <option value="@body.Id">@body.Name</option>
+                                    }
+                                </select>
+                                <span class="text-danger" asp-validation-for="@Model.GetBodyStyleId"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="large">
+                                <label>Auction starting price</label>
+                                <input type="number" class="form-control" asp-for="@Model.AuctionStartingPrice">
+                                <span class="text-danger" asp-validation-for="@Model.AuctionStartingPrice"></span>
+                            </div>
+                            <div class="small">
+                                <span class="text-danger" asp-validation-for="@Model.AuctionStartingPrice"></span>
+                                <input type="number" class="form-control" placeholder="Auction starting price" asp-for="@Model.AuctionStartingPrice">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pt-3">
+                        <div class="col-md-12 col-sm-12">
+                            <label>Images</label>
+                            <input class="form-control" asp-for="@Model.CarImages" multiple>
+                            <span class="text-danger" asp-validation-for="@Model.CarImages"></span>
+                        </div>
+                    </div>
+                    <div class="row pt-3">
+                        <div class="col-md-12 col-sm-12">
+                            <label>Your Notes</label>
+                            <textarea class="form-control" placeholder="Car's condition, modifications that you have made etc." asp-for="@Model.SellerNote"></textarea>
+                            <span class="text-danger" asp-validation-for="@Model.SellerNote"></span>
+                        </div>
+                    </div>
+                    <div class="row pt-4">
+                        <div class="col-12">
+                            <div class="text-center">
+                                <button class="submit-car" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

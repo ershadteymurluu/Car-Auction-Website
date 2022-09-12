@@ -1,0 +1,325 @@
+#Auctions {
+    .container-fluid {
+        .clicked {
+            position: relative;
+
+            .fa-check {
+                position: absolute;
+                color: black;
+                right: 11px;
+                top: 8px;
+                visibility: visible !important;
+            }
+        }
+
+        padding-top: 20px;
+
+        .section-bottom-border {
+            border-bottom: 1px solid $openblack;
+        }
+
+        .selected {
+            position: relative;
+            color: black !important;
+
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                height: 2px;
+                margin-top: 5px;
+                width: 100%;
+                background-color: $unfocusedcolor;
+            }
+        }
+
+        .part-one {
+            div.section-title {
+                font-size: 25px;
+                font-weight: bold;
+                position: relative;
+
+                i {
+                    visibility: hidden;
+                }
+
+                .wrapper {
+                    width: fit-content;
+                    display: flex;
+                    align-items: center;
+                    padding-right: 10px;
+
+                    .auction-toggle {
+                        pointer-events: none;
+
+                        i {
+                            visibility: visible;
+                            font-size: 14px;
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+
+            .top {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 15px;
+
+                .dropdown-wrapper {
+                    span.interval {
+                        cursor: default;
+                    }
+
+                    select {
+                        cursor: pointer;
+                    }
+                }
+
+                .mainDrop {
+                    border: none;
+                    box-shadow: 0 8px 40px rgb(0 0 0 / 16%);
+
+                    a {
+                        color: $unfocusedcolor  !important;
+
+                        &:hover {
+                            color: black !important;
+                            background-color: transparent;
+                        }
+                    }
+                }
+
+                .top-left {
+                    .wrapper {
+                        padding-top: 5px;
+
+                        button {
+                            background-color: white;
+                            color: black;
+                            border: none;
+                            margin-bottom: 10px;
+                            font-size: 20px;
+                            outline: none;
+                            padding: 0;
+                            font-weight: 600;
+
+                            &::after {
+                                content: none;
+                            }
+
+                        }
+                    }
+
+                    ul {
+                        padding: 0;
+                        padding-top: 2px;
+                        align-items: center;
+
+                        li:first-child {
+                            position: relative;
+                        }
+
+                        li {
+                            list-style: none;
+
+                            button {
+                                background-color: white;
+                                padding: 5px 15px;
+                                border-color: $openblack;
+                                border-radius: 10px;
+                                border-width: 1px;
+                                color: rgba(0, 0, 0, 0.808);
+
+                                i {
+                                    color: black;
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+                ul.auction-filter {
+                    align-items: center;
+
+                    li {
+                        // padding-top: 10px;
+                        list-style: none;
+
+                        a {
+                            text-decoration: none;
+                            color: $unfocusedcolor;
+
+                        }
+                    }
+                }
+            }
+
+            .row {
+
+                .col-lg-3,
+                .col-md-4,
+                .col-sm-12 {
+
+                    // border: 1px solid black;
+                    // padding: 0;
+                    .car-img-wrapper {
+                        // max-width: 350px;
+                        // min-width: 200px;    
+                        margin-bottom: 10px;
+                        position: relative;
+
+                        img {
+                            border-radius: 3px;
+                        }
+
+                        .auction-info {
+                            position: absolute;
+                            bottom: 6px;
+                            left: 6px;
+                            background-color: #222222;
+                            color: white;
+                            border-radius: 5px;
+                            padding: 2px 10px;
+
+                            ul {
+                                padding: 0;
+                                margin: 0;
+                                gap: 20px;
+
+                                li {
+                                    font-size: 14px;
+
+                                    i {
+                                        color: rgb(196, 196, 196);
+                                    }
+
+                                    span.countdown {
+                                        font-weight: bolder;
+                                    }
+                                }
+
+                                li.starting-price {
+                                    span {
+                                        color: rgb(196, 196, 196);
+                                    }
+
+                                    span.highest-bid {
+                                        color: white;
+                                        font-weight: bolder;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .car-details {
+                        *:first-child {
+                            a {
+                                text-decoration: none;
+                                color: black;
+                                font-weight: bold;
+
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+
+                        *:not(:first-child) {
+                            line-height: 1.4;
+                            font-size: 14px;
+                        }
+
+                        *:last-child {
+                            color: rgba(0, 0, 0, 0.507);
+                        }
+
+                    }
+                }
+            }
+        }
+
+        .past-auctions {
+            padding: 25px 0px;
+            margin-bottom: 40px;
+
+            a {
+                background-color: $primary-color;
+                padding: 10px 30px;
+                font-weight: bolder;
+                border: none;
+
+                &:hover {
+                    background-color: $primary-color-hovered;
+                }
+            }
+        }
+    }
+}
+
+
+@media(min-width:768px) {
+    .auction-menu {
+        display: none !important;
+    }
+}
+
+@media (max-width:768px) {
+    #Auctions {
+        .container-fluid {
+            padding-top: 5px;
+        }
+    }
+
+    .top {
+        .top-left {
+            flex-direction: column;
+        }
+    }
+
+    .section-title {
+        .wrapper {
+            .auction-toggle {
+                box-shadow: none;
+                pointer-events: all !important;
+
+            }
+
+        }
+
+        .auction-menu {
+            box-shadow: 0 8px 40px rgb(0 0 0 / 16%);
+            border: none;
+
+            li {
+                &:hover {
+                    background-color: unset;
+                }
+            }
+
+            .dropdown-item {
+                color: black;
+
+                &:hover {
+                    background-color: unset;
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width:1090px) {
+    .top {
+        flex-direction: column;
+
+        ul.auction-filter {
+            padding: 0;
+        }
+    }
+}

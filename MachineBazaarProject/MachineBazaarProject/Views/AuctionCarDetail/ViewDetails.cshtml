@@ -1,0 +1,59 @@
+﻿@model Car
+<div class="container-fluid">
+    <div class="table-wrapper table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
+        <table class="table my-listings">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">User</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Bid</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in (IEnumerable<AppUser>)ViewBag.DistincBids)
+                {
+                    <tr>
+                        <th scope="row">
+                            <span style="background-color:gold; padding:5px 10px; border-radius:30px">
+                                @if (Model.Status == false)
+                                {
+                                    @if (Model.CarBids.Last().User == item)
+                                    {
+                                        <i class="fa-solid fa-crown"></i>
+                                    }
+                                    else @(++ViewBag.Counter)
+                                }
+                                else if (Model.Status)
+                                {
+                                    @(ViewBag.Counter++)
+                                }
+                            </span>
+                        </th>
+                        <td>@item.UserName</td>
+                        <td><a style="color:black;" href="mailto:@item.Email">@item.Email</a></td>
+                        <td><a style="color:black;" href="tel:@item.PhoneNumber">@item.PhoneNumber</a></td>
+                        <td><span style="color:gold">@item.MyBids.Last().Bid<span>$</span></span></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<style>
+    .table-wrapper {
+        min-height: 80vh;
+    }
+
+    .table-wrapper {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        box-shadow: 1px 1px 7px 0px #0000003d;
+        border-radius: 15px;
+        padding: 10px 20px;
+        padding-bottom: 5px;
+    }
+</style>

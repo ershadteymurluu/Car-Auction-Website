@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MachineBazaar - Auction of cool modern cars, trucks and SUV's</title>
+
+    <!-- Owl carousel -->
+    <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/assets/css/owl.theme.default.css">
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="~/notification/ikr.notification.css">
+    <link rel="stylesheet" href="~/assets/css/index.css">
+</head>
+<body>
+    <!-- Navrbar starts -->
+    <nav>
+        <div class="container-fluid">
+            <div class="nav-container">
+                <div class="nav-wrapper d-flex justify-content-between align-items-baseline">
+                    <div class="nav-left d-flex gap-4 align-items-center">
+                        <div class="logo">
+                            <a asp-action="index" asp-controller="home"><p>Machine<span>Bazaar</span></p></a>
+                        </div>
+                        <ul class="gap-3 pt-1">
+                            <li class="auction"><a asp-action="index" asp-controller="home">Auctions</a></li>
+                            <li class="sell-car"><a asp-controller="sellyourcar" asp-action="index"><span>Sell a Car</span></a></li>
+                            <li class="what-is-machine"><a href="">What's MachineBazaar?</a></li>
+                            <li class="daily-email"><a href="">Daliy email</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-right d-flex align-items-center">
+                        <div class="form-group">
+                            <input type="search" placeholder="Search a Car (Ex. BMW, Audi, Ford)" id="search-car">
+                            <div class="search-icon"><img src="~/assets/images/search-icon-img.png" alt=""></div>
+                        </div>
+
+
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <a asp-controller="account" asp-action="login" class="sign-in-btn">Sign In</a>
+                        }
+                        else
+                        {
+                            <div class="person-toggle dropdown">
+                                <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-person"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" asp-action="myprofile" asp-controller="account">Profile</a></li>
+                                    <li><a class="dropdown-item" asp-action="mylistings" asp-controller="account">My Listings</a></li>
+                                    <li><a class="dropdown-item" asp-action="logout" asp-controller="account">Logout</a></li>
+                                </ul>
+                            </div>
+                            <div class="notification dropdown">
+                                <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-bell"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li>
+                                        <p style="font-size:14px; color:black">Hi, Welcome @User.Identity.Name!</p>
+                                        <div style="text-align:right;color:gray"><a href="" style="text-decoration:none;color:gray;"><small style="font-size:12px">Mark as read</small></a></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+
+                        <button class="navbar-toggle navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa-solid fa-bars"></i>
+                            <i class="fa-solid fa-car-side"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">What's MachineBazaar?</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" asp-controller="sellyourcar" asp-action="index"><span>Sel a Car</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Daily Email</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn" type="submit"><i class="bi bi-search"></i></button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </nav>
+    <!-- Navbar ends -->
+    @RenderBody()
+    @RenderSection("scripts",false)
+    @RenderSection("homepageAutction",false)
+    @RenderSection("NewListed",false)
+    @RenderSection("PastResultFilter",false)
+    @RenderSection("Search",false)
+    @RenderSection("Comment",false)
+    <!-- footer starts -->
+    <footer>
+        <div class="container-fluid d-flex flex-column">
+            <div class="wrapper d-flex justify-content-between align-items-start">
+                <div class="logo">
+                    <a href="">Machine<span>Bazaar</span></a>
+                </div>
+                <div class="how-it-works footer-item">
+                    <p href="" class="text-uppercase">How it works</p>
+                    <a href=""><p>Buying a Car</p></a>
+                    <a href=""><p>Selling a Car</p></a>
+                    <a href=""><p>FAQs</p></a>
+                </div>
+                <div class="sellers footer-item">
+                    <p href="" class="text-uppercase">Sellers</p>
+                    <a href=""><p>Submit Your Car </p></a>
+                    <a href=""><p>Photography Guide</p></a>
+                </div>
+                <div class="support footer-item">
+                    <p href="" class="text-uppercase">Helpful Links</p>
+                    <a href=""><p>Support</p></a>
+                </div>
+                <div class="social-networks footer-item">
+                    <ul class="d-flex gap-3">
+                        <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                    </ul>
+                    <p class="small-fs">&COPY; Copyright 2022 MachineBazaar LLC</p>
+                    <a class="small-fs" href="">Terms of Use</a>
+                    &nbsp;
+                    <a class="small-fs" href="">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer ends -->
+
+    <script src="~/assets/JS/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="~/assets/JS/jquery.timeago.js"></script>
+    <script src="~/assets/JS/owl.carousel.min.js"></script>
+    <script src="~/assets/JS/bootstrap.bundle.min.js"></script>
+    <script src="~/notification/ikr.notificationPlugin.js"></script>
+    <script>
+
+        $("#search-car").keypress(function(e) {
+            var key = e.which;
+            let query = $("#search-car").val()
+            if (key == 13)  // the enter key code
+            {
+                $.ajax({
+                    url: "/home/SearchEngine?query=" + query,
+                    method: "GET",
+                    success: function(res) {
+                        $(".row.g-4").html("");
+                        $(".row.g-4").append(res);
+                    }
+                });
+                $("#search-car").val("");
+            }
+        });
+    </script>
+    <script src="~/assets/JS/main.js"></script>
+</body>
+</html>
